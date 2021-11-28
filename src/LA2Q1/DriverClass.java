@@ -7,81 +7,62 @@ import java.util.List;
 
 public class DriverClass {
 
-    public static void main (String[] args)
-    {
+    public static void main(String[] args) {
         header();
 
-        Integer[] arr1 = new Integer[50000];
-        int sz = arr1.length;
-        Integer[] arr2 = new Integer[sz];
+        Integer[] arr = new Integer[50000];
+        Integer[] arr2 = new Integer[arr.length];
 
-        for(int i=0; i<arr1.length; i++)
-        {
-            arr1[i] = ((int)(Math.random()*(sz-1)))+1 ;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ((int) (Math.random() * (arr.length - 1))) + 1;
         }
-        System.arraycopy(arr1,0, arr2, 0, sz);
+        System.arraycopy(arr, 0, arr2, 0, arr.length);
 
 
         double start, finish, timeTaken;
-        ArrayList<Integer> arrayList = new ArrayList<Integer>(List.of(arr1));
+        ArrayList<Integer> arrayList = new ArrayList<Integer>(List.of(arr));
         start = System.nanoTime();
         Collections.sort(arrayList);
-        finish = System.nanoTime();
-        //System.out.println(arrayList.toString());
-        timeTaken = (finish - start)/(10^6);
-        System.out.println("Collections Sorting Time: " + (timeTaken) + " milliseconds");
+        System.out.println("Collections Sorting Time: " + (System.nanoTime() - start) / (Math.pow(10, 6))+ " milliseconds");
 
+        //selection sort
+        System.out.println("Selection-Sort Time: " + (DanielMichaelTestingSortingMethods.selectionSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length);
 
-        //System.out.println("\n\n");
+        //bubble sort
+        System.out.println("Bubble-Sort Time: " + (DanielMichaelTestingSortingMethods.bubbleSort(arr)) / (Math.pow(10, 6))+ " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
-        timeTaken = (DanielMichaelTestingSortingMethods.selectionSort(arr1))/(10^6);
-        System.out.println("Our Selection-Sort Time: " + (timeTaken) + " milliseconds");
-        System.arraycopy(arr2,0, arr1, 0, sz);
+        //insertion sort
+        System.out.println("Insertion-Sort Time: " + (DanielMichaelTestingSortingMethods.insertionSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
+        //merge sort
+        System.out.println("Merge-Sort Time: " + (DanielMichaelTestingSortingMethods.mergeSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
-        timeTaken = (DanielMichaelTestingSortingMethods.bubbleSort(arr1))/(Math.pow(10,6));
-        System.out.println("Our Bubble-Sort Time: " + (timeTaken) + " milliseconds");
-        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
-        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+        //quick sort
+        System.out.println("Quick-Sort Time: " + (DanielMichaelTestingSortingMethods.quickSort(arr, 0, arr.length - 1)) / (Math.pow(10, 6)) + " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
-        // time the insertion sort
-        timeTaken = (DanielMichaelTestingSortingMethods.insertionSort(arr1))/(Math.pow(10,6));
-        System.out.println("Our Insertion-Sort Time: " + (timeTaken) + " milliseconds");
-        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
-        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
-
-        // time the merge sort
-        timeTaken = (DanielMichaelTestingSortingMethods.mergeSort(arr1))/(Math.pow(10,6));
-        System.out.println("Our Merge-Sort Time: " + (timeTaken) + " milliseconds");
-        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
-        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
-
-        // time the quick sort
-        timeTaken = (DanielMichaelTestingSortingMethods.quickSort(arr1, 0, arr1.length - 1))/(Math.pow(10,6));
-        System.out.println("Our Quick-Sort Time: " + (timeTaken) + " milliseconds");
-        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
-
-        // time the bucket sort
-        timeTaken = (DanielMichaelTestingSortingMethods.bucketSort(arr1, 0, arr1.length - 1, 5))/(Math.pow(10,6));
-        System.out.println("Our Bucket-Sort Time: " + (timeTaken) + " milliseconds");
-        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+        //bucket sort
+;
+        System.out.println("Bucket-Sort Time: " + (DanielMichaelTestingSortingMethods.bucketSort(arr, 0, arr.length - 1, 5)) / (Math.pow(10, 6)) + " milliseconds");
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
         footer();
     }
 
-    static void header()
-    {
-        System.out.println("" +
-                "*******************************************************************************\n" +
-                "Names: Alexander and Piotr\n" +
-                "Student Numbers: 251095362 and #########\n" +
-                "Goal of this project: This project will sort an integer array using Selection,\n" +
-                "Bubble, Insertion, Merge, Quick, and Bucket sorting. The time taken for each\n" +
-                "sorting method will be outputted to the console to compare the time of each.\n" +
+    static void header() {
+        System.out.println("*****************************************************************************************************" +
+                "\nNames: Daniel and Michael" +
+                "\nStudent Numbers: 251076275 and 251110243" +
+                "Goal of this project: This project will sort an Integer array using generic Selection, Bubble, Insertion, Merge, Quick, and (Integer) Bucket sorting.\n"+
+                "The time take for each type of sorting will be displayed to show time efficiencies of each sorting algorithm.\n" +
                 "*******************************************************************************");
     }
-    static void footer()
-    {
+
+    static void footer() {
         System.out.println("" +
                 "***********************************************************\n" +
                 "This is ____ on ____\n" +
