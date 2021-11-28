@@ -3,7 +3,7 @@ package LA2Q1;
 import java.lang.*;
 import java.util.*;
 
-public class DanielMichaelAlexanderTestingSortingMethods {
+public class DanielMichaelTestingSortingMethods {
 
     //Stuff here
 
