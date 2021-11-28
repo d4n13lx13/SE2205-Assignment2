@@ -1,29 +1,25 @@
 package LA2Q2;
 
-public class StudentGrade implements Comparable<StudentGrade>
-{
-    public StudentGrade(String firstName, String lastName, int grade)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.grade = grade;
-    }
+public class StudentGrade implements Comparable<StudentGrade> {
 
     private String firstName, lastName;
     private int grade;
 
-    public void setFirstName(String name)
-    {
+    public StudentGrade(String firstName, String lastName, int grade) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setGrade(grade);
+    }
+
+    public void setFirstName(String name) {
         this.firstName = name;
     }
 
-    public void setLastName(String name)
-    {
+    public void setLastName(String name) {
         this.lastName = name;
     }
 
-    public void setGrade(int grade)
-    {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
