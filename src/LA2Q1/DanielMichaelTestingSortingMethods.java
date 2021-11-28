@@ -4,82 +4,123 @@ import java.lang.*;
 import java.util.*;
 
 public class DanielMichaelTestingSortingMethods {
-
-    //Stuff here
-
+    /**
+     * the selectionSort method sorts a generic array using the selection sorting algorithm
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static <T extends Comparable<? super T>> long selectionSort(T[] a) {
-        long start, finish;
-        start = System.nanoTime();
+        // start time
+        long start = System.nanoTime();
+        // if the array has less than 2 elements
         if (a.length < 2)
             return 0;
         for (int i = 0; i < a.length; i++) {
             int smallest = i;
+            // Compare all the elements in the array with smallest index
             for (int j = i + 1; j < a.length; j++) {
+                // if the element is found to be smaller, set smallest as the new found smallest index
                 if (a[smallest].compareTo(a[j]) > 0) {
                     smallest = j;
                 }
             }
+            // swap the elements in the array
             T temp = a[i];
             a[i] = a[smallest];
             a[smallest] = temp;
         }
-
+        // finish time
         return System.nanoTime() - start;
     }
 
+    /**
+     * the bubbleSort method sorts a generic array using the bubble sorting algorithm
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static <T extends Comparable<? super T>> long bubbleSort(T[] a) {
-        long start, finish;
-        start = System.nanoTime();
+        // start time
+        long start = System.nanoTime();
+        // if the array has less than 2 elements
         if (a.length < 2)
             return 0;
         for (int i = a.length - 1; i > 0; i--) {
             for (int j = 0; (j + 1) <= i; j++) {
+                // compares the current element to the next consecutive element
                 if (a[j].compareTo(a[j + 1]) > 0) {
+                    // swap the elements in the array if the smaller index is bigger
                     T temp = a[j];
                     a[j] = a[j + 1];
                     a[j + 1] = temp;
                 }
             }
         }
-
+        // finish time
         return System.nanoTime() - start;
     }
 
+    /**
+     * the insertionSort method sorts a generic array using the insertion sorting algorithm
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static <T extends Comparable<? super T>> long insertionSort(T[] a) {
-        long start, finish;
-        start = System.nanoTime();
+        // start time
+        long start = System.nanoTime();
+        // if the array has less than 2 elements
         if (a.length < 2)
             return 0;
 
         for (int i = 0; i < a.length; i++) {
             for (int j = i; j > 0; j--) {
+                // compares the current element in the array with next smaller consecutive element
                 if (a[j].compareTo(a[j - 1]) < 0) {
+                    // swap the elements in the array if the bigger index is smaller
                     T temp = a[j];
                     a[j] = a[j - 1];
                     a[j - 1] = temp;
                 }
             }
         }
-
+        // finish time
         return System.nanoTime() - start;
     }
 
+
+    /**
+     * the quickSort method sorts a generic array using the quick sorting algorithm
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static <T extends Comparable<? super T>> long quickSort(T[] arr, int a, int b) {
-        long time = System.nanoTime(); //time start
+        // start time
+        long time = System.nanoTime();
 
-        if (a >= b) return 0;
+        if (a >= b)
+            return 0;
 
+        // create a pivot element
         T pivot = arr[b];
         int l = a, r = b - 1;
 
+        // while left is less than or equal to right
         while (l <= r) {
+            // if less is less than or equal to right and is less than the pivot
             while (l <= r && arr[l].compareTo(pivot) <= 0) {
+                // increment left
                 l = l + 1;
             }
+            // if less is less than or equal to right and right is greater than the pivot
             while (l <= r && arr[r].compareTo(pivot) >= 0) {
+                // decrement right
                 r = r - 1;
             }
             if (l < r) {
+                // swap the elements in the array
                 T temp = arr[l];
                 arr[l] = arr[r];
                 arr[r] = temp;
@@ -88,28 +129,41 @@ public class DanielMichaelTestingSortingMethods {
                 r = r - 1;
             }
         }
+        // swap the elements in the array
         T temp = arr[l];
         arr[l] = arr[b];
         arr[b] = temp;
 
         quickSort(arr, a, l - 1);
         quickSort(arr, l + 1, b);
-
-        time = System.nanoTime() - time; //time end
+        // finish time
+        time = System.nanoTime() - time;
         return time;
     }
 
+    /**
+     * the mergeSort method sorts a generic array using the merge sorting algorithm
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static <T extends Comparable<? super T>> long mergeSort(T[] arr) {
-        long start = System.nanoTime(); //time start
+        // start time
+        long start = System.nanoTime();
 
         int n = arr.length;
-        if (n < 2) return 0;
+        // if the number of elements in the array is less than 2
+        if (n < 2)
+            return 0;
 
+        // split the array in half
         int mid = n / 2;
         T[] top = Arrays.copyOfRange(arr, 0, mid);
         T[] bot = Arrays.copyOfRange(arr, mid, n);
 
+        // sort the top array using recursion
         mergeSort(top);
+        // sort the bottom array using recursion
         mergeSort(bot);
 
         int i = 0, j = 0;
@@ -120,6 +174,7 @@ public class DanielMichaelTestingSortingMethods {
                 arr[i + j] = bot[j++];
         }
 
+        // finish time
         return System.nanoTime() - start;
     }
 

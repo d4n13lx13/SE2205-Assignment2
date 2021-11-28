@@ -13,9 +13,11 @@ public class DriverClass {
         Integer[] arr = new Integer[50000];
         Integer[] arr2 = new Integer[arr.length];
 
+        // populate the array with random values
         for (int i = 0; i < arr.length; i++) {
             arr[i] = ((int) (Math.random() * (arr.length - 1))) + 1;
         }
+        // copy the content from the first array to the backup array
         System.arraycopy(arr, 0, arr2, 0, arr.length);
 
 
@@ -27,7 +29,7 @@ public class DriverClass {
 
         //selection sort
         System.out.println("Selection-Sort Time: " + (DanielMichaelTestingSortingMethods.selectionSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
-        System.arraycopy(arr2, 0, arr, 0, arr.length);
+        System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
         //bubble sort
         System.out.println("Bubble-Sort Time: " + (DanielMichaelTestingSortingMethods.bubbleSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
@@ -46,7 +48,6 @@ public class DriverClass {
         System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
         //bucket sort
-        ;
         System.out.println("Bucket-Sort Time: " + (DanielMichaelTestingSortingMethods.bucketSort(arr, 0, arr.length - 1, 5)) / (Math.pow(10, 6)) + " milliseconds");
         System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
