@@ -57,9 +57,9 @@ public class DriverClass {
         System.out.println("*****************************************************************************************************" +
                 "\nNames: Daniel and Michael" +
                 "\nStudent Numbers: 251076275 and 251110243" +
-                "Goal of this project: This project will sort an Integer array using generic Selection, Bubble, Insertion, Merge, Quick, and (Integer) Bucket sorting.\n"+
-                "The time take for each type of sorting will be displayed to show time efficiencies of each sorting algorithm.\n" +
-                "*******************************************************************************");
+                "\nGoal of this project: This project will sort an Integer array using generic Selection, Bubble, Insertion, Merge, Quick, and (Integer) Bucket sorting."+
+                "\nThe time take for each type of sorting will be displayed to show time efficiencies of each sorting algorithm." +
+                "\n*******************************************************************************");
     }
 
     public static void footer() {
