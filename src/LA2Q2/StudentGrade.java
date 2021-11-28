@@ -27,8 +27,31 @@ public class StudentGrade implements Comparable<StudentGrade>
         this.grade = grade;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-10s %-10s : %d\n", getFirstName(), getLastName(), getGrade());
+    }
+
     @Override
     public int compareTo(StudentGrade o) {
-        return 0;
+        if (this.getGrade() > o.getGrade())
+            return 1;
+        else if (this.getGrade() < o.getGrade()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

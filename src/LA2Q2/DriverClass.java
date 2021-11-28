@@ -3,7 +3,7 @@ package LA2Q2;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Vector;
+import java.util.*;
 
 public class DriverClass {
     public static void main(String[] args) {
@@ -38,15 +38,24 @@ public class DriverClass {
 
         System.out.println("Unsorted Array: ");
         for (int i = 0; i < sg.size(); i++) {
-            System.out.printf("%s %s :  ");
+            System.out.printf(sg.get(i).toString());
         }
 
 //sort sg using Collections’ sort method and that will sort the list based on the grade
 //print the sorted content by using toString() method (see the sample output)
 
-//Create an array of StudentGrade type with a length of fnArray
+        Collections.sort(sg);
+        System.out.println("\nSorted Array: ");
+        for (int i = 0; i < sg.size(); i++) {
+            System.out.printf(sg.get(i).toString());
+        }
 
+//Create an array of StudentGrade type with a length of fnArray
 //with the help of Vectors copyInto() method, copy sg to StudentGrade array you just created above
+
+        StudentGrade stgrd[] = new StudentGrade[fnArray.length];
+        sg.copyInto(stgrd);
+
 //At this point tweak one of the stable sorting methods (your created in Q1), either merge or insertion
 // sort that will accept a StudentGrade array and an integer key. Define this public static void method
 // outside the driver method below. The key in the method header will decide whether you would like to
@@ -67,7 +76,7 @@ public class DriverClass {
         System.out.println("*****************************************************************************************************" +
                 "\nNames: Daniel and Michael" +
                 "\nStudent Numbers: 251076275 and 251110243" +
-                "\nGoal of this project: To sort an array of students by their grades, first names, and last names."
+                "\nGoal of this project: To sort an array of students by their grades, first names, and last names." +
                 "\n*****************************************************************************************************");
     }
 
@@ -84,4 +93,7 @@ public class DriverClass {
     }
 //Your sort method will go here.
 
+    public static void sortMethod () {
+        
+    }
 }
