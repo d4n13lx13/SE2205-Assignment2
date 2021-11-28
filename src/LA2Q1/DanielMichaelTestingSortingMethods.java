@@ -23,8 +23,8 @@ public class DanielMichaelTestingSortingMethods {
             a[i] = a[smallest];
             a[smallest] = temp;
         }
-        finish = System.nanoTime();
-        return finish - start;
+
+        return System.nanoTime() - start;
     }
 
     public static <T extends Comparable<? super T>> long bubbleSort(T[] a) {
@@ -41,8 +41,8 @@ public class DanielMichaelTestingSortingMethods {
                 }
             }
         }
-        finish = System.nanoTime();
-        return finish - start;
+
+        return System.nanoTime() - start;
     }
 
     public static < T extends Comparable <? super T >> long insertionSort(T[] a) {
