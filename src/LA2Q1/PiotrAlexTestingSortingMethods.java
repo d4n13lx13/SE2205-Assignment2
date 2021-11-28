@@ -1,10 +1,12 @@
 package LA2Q1;
 
+import java.sql.ClientInfoStatus;
 import java.util.Arrays;
 import java.util.Vector;
 
 public class PiotrAlexTestingSortingMethods
 {
+    //Our implementation of merge sort based off class notes: Unit 4_3 Companion QMR pg 1
     public static <T extends Comparable<? super T>>long mergeSort(T[] arr)
     {
         long time;
@@ -32,7 +34,7 @@ public class PiotrAlexTestingSortingMethods
         time = System.nanoTime() - time; //time end
         return time;
     }
-
+    //Our implementation of quick sort based off class notes: Unit 4_3 Advanced Sorting Algorithms slide 40
     public  static <T extends Comparable<? super T>>long quickSort(T[] arr, int a, int b)
     {
         long time = System.nanoTime(); //time start
@@ -72,85 +74,101 @@ public class PiotrAlexTestingSortingMethods
         time = System.nanoTime() - time; //time end
         return time;
     }
-
+    //Our implementation of selection sort based off class notes: Unit 4_2 Simple Sorting Algorithms slide 23
     public static <T extends Comparable<? super T>> long selectionSort(T[] arr)
-    {
-        long time;
-        time = System.nanoTime(); //time start
-        if (arr.length < 2)
-            return 0;
-        for (int i = 0; i < arr.length; i++)
-        {
-            int smallest = i;
-            for (int j = i + 1; j < arr.length; j++)
-            {
-                if (arr[smallest].compareTo(arr[j]) > 0)
-                {
-                    smallest = j;
-                }
-            }
-            T temp = arr[i];
-            arr[i] = arr[smallest];
-            arr[smallest] = temp;
-        }
-        time = System.nanoTime() - time;
-        return time;
-    }
-
-    public static <T extends Comparable<? super T>> long bubbleSort(T[] a)
-    {
-        long start, finish;
-        start = System.nanoTime();
-        if(a.length < 2)
-            return 0;
-        for (int i = a.length - 1; i > 0; i--)
-        {
-            for (int j = 0; (j + 1) <= i; j++)
-            {
-                if(a[j].compareTo(a[j+1]) > 0)
-                {
-                    T temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
-                }
-            }
-        }
-        finish = System.nanoTime();
-        return finish - start;
-    }
-
-    public static long bucketSort(Integer[] a, int first, int last, int maxDigits)
     {
         long time = System.nanoTime(); //time start
 
-        Vector<Integer>[] buckets = new Vector[10];
-
-        for (int i = 0; i < buckets.length; i++)
-            buckets[i] = new Vector<>();
-
-        for (int j = 0; j < maxDigits; j++)
+        for (int i = 0; i < arr.length; i++)
         {
-            for (int k = 0; k < buckets.length; k++)
-                buckets[k].removeAllElements();
-
-            for (int l = first; l <= last; l++)
+            int nextSmallest = i;
+            for (int j = i + 1; j < arr.length; j++)
             {
-                Integer digit = findDigit(a[l], j);
-                buckets[digit].add(a[l]);
+                if (arr[j].compareTo(arr[nextSmallest]) < 0)
+                {
+                    nextSmallest = j;
+                }
+                T temp = arr[i];
+                arr[i] = arr[nextSmallest];
+                arr[nextSmallest] = temp;
             }
+        }
 
-            int idx = 0;
-            for (int m = 0; m < buckets.length; m++)
+        time = System.nanoTime() - time;
+        return time;
+    }
+    //Our implementation of bubble sort based off class notes: Unit 4_2 Simple Sorting Algorithms slide 9
+    public static <T extends Comparable<? super T>> long bubbleSort(T[] arr)
+    {
+        long time = System.nanoTime(); //time start
+
+        for (int i = 1; i < arr.length; i++)
+        {
+            for (int j = 0; j < arr.length - i; j++)
             {
-                for (int n = 0; n < buckets[m].size(); n++)
-                    a[idx++] = buckets[m].get(n);
+                if(arr[j].compareTo(arr[j+1]) > 0)
+                {
+                    T temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
             }
         }
 
         time = System.nanoTime() - time; //time end
         return time;
     }
+    //Our implementation of insertion sort based off class notes: Unit 4_2 Simple Sorting Algorithms slide 17
+    public static < T extends Comparable <? super T >> long insertionSort(T[] arr)
+    {
+        long time = System.nanoTime(); //start time
 
+        for (int i = 0; i < arr.length; i++)
+        {
+            T key = arr[i];
+            for (int j = i - 1; j >= 0 && arr[j].compareTo(key) > 0; j--)
+            {
+                arr[j+1] = arr[j];
+                arr[j] = key;
+            }
+        }
+
+        time = System.nanoTime() - time;
+        return time;
+    }
+    //Our implementation of bucket sort based off class notes: Unit 4_3 Companion QMR pg 8-9
+    public static long bucketSort(Integer[] arr, int first, int last, int maxDigits)
+    {
+        long time = System.nanoTime(); //time start
+
+        Vector<Integer>[] bucket = new Vector[10];
+
+        for (int i = 0; i < bucket.length; i++)
+            bucket[i] = new Vector<>();
+
+        for (int i = 0; i < maxDigits; i++)
+        {
+            for (int j = 0; j < bucket.length; j++)
+                bucket[j].removeAllElements();
+
+            for (int index = first; index <= last; index++)
+            {
+                Integer digit = findDigit(arr[index], i);
+                bucket[digit].add(arr[index]);
+            }
+
+            int index = 0;
+            for (int m = 0; m < bucket.length; m++)
+            {
+                for (int n = 0; n < bucket[m].size(); n++)
+                    arr[index++] = bucket[m].get(n);
+            }
+        }
+
+        time = System.nanoTime() - time; //time end
+        return time;
+    }
+    //additional function for bucket sort
     private static Integer findDigit(int n, int i)
     {
         int t = 0;

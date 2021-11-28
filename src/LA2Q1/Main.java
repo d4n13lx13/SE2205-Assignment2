@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Main {
-
+public class Main
+{
     public static void main (String[] args)
     {
         header();
@@ -33,9 +33,6 @@ public class Main {
         System.out.println("Collections Sorting Time: " + (timeTaken) + " milliseconds");
         //System.out.println("Sorted Array: " + Arrays.toString(arr1));
 
-
-        //System.out.println("\n\n");
-
         timeTaken = (PiotrAlexTestingSortingMethods.selectionSort(arr1))/(Math.pow(10,6));
         System.out.println("Our Selection-Sort Time: " + (timeTaken) + " milliseconds");
         //System.out.println("Sorted Array: " + Arrays.toString(arr1));
@@ -43,6 +40,11 @@ public class Main {
 
         timeTaken = (PiotrAlexTestingSortingMethods.bubbleSort(arr1))/(Math.pow(10,6));
         System.out.println("Our Bubble-Sort Time: " + (timeTaken) + " milliseconds");
+        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
+        System.arraycopy(arr2,0, arr1, 0, sz);
+
+        timeTaken = (PiotrAlexTestingSortingMethods.insertionSort(arr1))/(Math.pow(10,6));
+        System.out.println("Our Insertion-Sort Time: " + (timeTaken) + " milliseconds");
         //System.out.println("Sorted Array: " + Arrays.toString(arr1));
         System.arraycopy(arr2,0, arr1, 0, sz);
 
@@ -63,13 +65,12 @@ public class Main {
 
         footer();
     }
-
     static void header()
     {
         System.out.println("" +
                 "*******************************************************************************\n" +
                 "Names: Alexander and Piotr\n" +
-                "Student Numbers: 251095362 and #########\n" +
+                "Student Numbers: 251095362 and 251104481\n" +
                 "Goal of this project: This project will sort an integer array using Selection,\n" +
                 "Bubble, Insertion, Merge, Quick, and Bucket sorting. The time taken for each\n" +
                 "sorting method will be outputted to the console to compare the time of each.\n" +
@@ -84,5 +85,4 @@ public class Main {
                 "Good bye! Alexander Van Hoeve and Piotr Nowak\n" +
                 "***********************************************************\n");
     }
-
 }
