@@ -1,36 +1,27 @@
 package LA2Q2;
 
 public class StudentGrade implements Comparable<StudentGrade> {
+
     private String firstName, lastName;
     private int grade;
 
-    /**
-     * Constructor method for the StudentGrade class
-     *
-     * @param firstName first name of the object
-     * @param lastName  last name of the object
-     * @param grade     current grade associated with the object
-     */
     public StudentGrade(String firstName, String lastName, int grade) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.grade = grade;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setGrade(grade);
     }
 
-    /**
-     * setFirstName() method sets a new first name for the object
-     *
-     * @param name new first name
-     */
     public void setFirstName(String name) {
         this.firstName = name;
     }
+
 
     /**
      * setLastName() method sets a new last name for the object
      *
      * @param name new last name
      */
+
     public void setLastName(String name) {
         this.lastName = name;
     }
@@ -40,6 +31,7 @@ public class StudentGrade implements Comparable<StudentGrade> {
      *
      * @param grade new grade
      */
+
     public void setGrade(int grade) {
         this.grade = grade;
     }

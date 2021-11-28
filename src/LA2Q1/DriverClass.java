@@ -25,14 +25,14 @@ public class DriverClass {
         ArrayList<Integer> arrayList = new ArrayList<Integer>(List.of(arr));
         start = System.nanoTime();
         Collections.sort(arrayList);
-        System.out.println("Collections Sorting Time: " + (System.nanoTime() - start) / (Math.pow(10, 6))+ " milliseconds");
+        System.out.println("Collections Sorting Time: " + (System.nanoTime() - start) / (Math.pow(10, 6)) + " milliseconds");
 
         //selection sort
         System.out.println("Selection-Sort Time: " + (DanielMichaelTestingSortingMethods.selectionSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
         System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
         //bubble sort
-        System.out.println("Bubble-Sort Time: " + (DanielMichaelTestingSortingMethods.bubbleSort(arr)) / (Math.pow(10, 6))+ " milliseconds");
+        System.out.println("Bubble-Sort Time: " + (DanielMichaelTestingSortingMethods.bubbleSort(arr)) / (Math.pow(10, 6)) + " milliseconds");
         System.arraycopy(arr2, 0, arr, 0, arr.length); // copy the array again
 
         //insertion sort
@@ -58,7 +58,7 @@ public class DriverClass {
         System.out.println("*****************************************************************************************************" +
                 "\nNames: Daniel and Michael" +
                 "\nStudent Numbers: 251076275 and 251110243" +
-                "\nGoal of this project: This project will sort an Integer array using generic Selection, Bubble, Insertion, Merge, Quick, and (Integer) Bucket sorting."+
+                "\nGoal of this project: This project will sort an Integer array using generic Selection, Bubble, Insertion, Merge, Quick, and (Integer) Bucket sorting." +
                 "\nThe time take for each type of sorting will be displayed to show time efficiencies of each sorting algorithm." +
                 "\n*******************************************************************************");
     }
