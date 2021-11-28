@@ -10,7 +10,7 @@ public class DanielMichaelTestingSortingMethods {
     public static <T extends Comparable<? super T>> long selectionSort(T[] a) {
         long start, finish;
         start = System.nanoTime();
-        if(a.length < 2)
+        if (a.length < 2)
             return 0;
         for (int i = 0; i < a.length; i++) {
             int smallest = i;
@@ -30,14 +30,14 @@ public class DanielMichaelTestingSortingMethods {
     public static <T extends Comparable<? super T>> long bubbleSort(T[] a) {
         long start, finish;
         start = System.nanoTime();
-        if(a.length < 2)
+        if (a.length < 2)
             return 0;
         for (int i = a.length - 1; i > 0; i--) {
             for (int j = 0; (j + 1) <= i; j++) {
-                if(a[j].compareTo(a[j+1]) > 0) {
+                if (a[j].compareTo(a[j + 1]) > 0) {
                     T temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
                 }
             }
         }
@@ -45,15 +45,15 @@ public class DanielMichaelTestingSortingMethods {
         return System.nanoTime() - start;
     }
 
-    public static < T extends Comparable <? super T >> long insertionSort(T[] a) {
+    public static <T extends Comparable<? super T>> long insertionSort(T[] a) {
         long start, finish;
         start = System.nanoTime();
-        if(a.length < 2)
+        if (a.length < 2)
             return 0;
 
-        for(int i = 0; i < a.length; i++) {
-            for(int j = i; j > 0; j--) {
-                if(a[j].compareTo(a[j - 1]) < 0) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (a[j].compareTo(a[j - 1]) < 0) {
                     T temp = a[j];
                     a[j] = a[j - 1];
                     a[j - 1] = temp;
@@ -64,6 +64,29 @@ public class DanielMichaelTestingSortingMethods {
         return System.nanoTime() - start;
     }
 
+    public static <T extends Comparable<? super T>> long mergeSort(T[] arr) {
+        long start = System.nanoTime(); //time start
+
+        int n = arr.length;
+        if (n < 2) return 0;
+
+        int mid = n / 2;
+        T[] top = Arrays.copyOfRange(arr, 0, mid);
+        T[] bot = Arrays.copyOfRange(arr, mid, n);
+
+        mergeSort(top);
+        mergeSort(bot);
+
+        int i = 0, j = 0;
+        while (i + j < arr.length) {
+            if (j == bot.length || (i < top.length && top[i].compareTo(bot[j]) < 0))
+                arr[i + j] = top[i++];
+            else
+                arr[i + j] = bot[j++];
+        }
+
+        return System.nanoTime() - start;
+    }
 
     public static long bucketSort(Integer[] a, int first, int last, int maxDigits) {
         long start = System.nanoTime();

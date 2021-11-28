@@ -44,7 +44,6 @@ public class StudentGrade implements Comparable<StudentGrade>
         return String.format("%-10s %-10s : %d\n", getFirstName(), getLastName(), getGrade());
     }
 
-    @Override
     public int compareTo(StudentGrade o) {
         if (this.getGrade() > o.getGrade())
             return 1;
@@ -54,4 +53,5 @@ public class StudentGrade implements Comparable<StudentGrade>
             return 0;
         }
     }
+
 }

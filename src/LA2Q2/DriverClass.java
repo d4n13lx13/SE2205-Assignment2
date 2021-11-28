@@ -45,7 +45,7 @@ public class DriverClass {
 //print the sorted content by using toString() method (see the sample output)
 
         Collections.sort(sg);
-        System.out.println("\nSorted Array: ");
+        System.out.println("\nSorted by Grades: ");
         for (int i = 0; i < sg.size(); i++) {
             System.out.printf(sg.get(i).toString());
         }
@@ -62,11 +62,21 @@ public class DriverClass {
 // sort the StudentGrade array according to the first name (key = 1) or the last name (key = 2). Once
 // done, come back to this place inside the driver and call your sort method with the argument of
 // StudentGrade array (you created above) and key = 1 (first names).
-
-
 //print the sorted array (see the sample output)
+        sortMethod(stgrd, 1);
+        System.out.println("\nSorted by First Names: ");
+        for (int i = 0; i < stgrd.length; i++) {
+            System.out.printf(stgrd[i].toString());
+        }
+
 // Call your sort method again with the argument of StudentGrade array (you created above) and key = 2.
 //print the sorted array (see the sample output)
+        sortMethod(stgrd, 2);
+        System.out.println("\nSorted by Last Names: ");
+        for (int i = 0; i < stgrd.length; i++) {
+            System.out.printf(stgrd[i].toString());
+        }
+
 //call your footer method here
 
         footer();
@@ -93,7 +103,32 @@ public class DriverClass {
     }
 //Your sort method will go here.
 
-    public static void sortMethod () {
-        
+    public static void sortMethod (StudentGrade[] stgrd, int key) {
+        if (stgrd.length < 2)
+            return;
+
+        int mid  = stgrd.length / 2;
+
+        StudentGrade[] t = Arrays.copyOfRange(stgrd, 0, mid);
+        StudentGrade[] b = Arrays.copyOfRange(stgrd, mid, stgrd.length);
+
+        sortMethod(t, key);
+        sortMethod(b, key);
+
+        int i = 0, j = 0;
+        while (i + j < stgrd.length) {
+            if (key == 1) {
+                if (j == b.length || (i < t.length && t[i].getFirstName().compareTo(b[j].getFirstName()) < 0))
+                    stgrd[i + j] = t[i++];
+                else
+                    stgrd[i + j] = b[j++];
+            } else if (key == 2) {
+                if (j == b.length || (i < t.length && t[i].getLastName().compareToIgnoreCase(b[j].getLastName()) < 0))
+                    stgrd[i + j] = t[i++];
+                else
+                    stgrd[i + j] = b[j++];
+            }
+        }
+
     }
 }
