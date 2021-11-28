@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Main {
+public class DriverClass {
 
     public static void main (String[] args)
     {
@@ -34,10 +34,37 @@ public class Main {
 
         //System.out.println("\n\n");
 
-        timeTaken = (PiotrAlexTestingSortingMethods.selectionSort(arr1))/(10^6);
+        timeTaken = (DanielMichaelTestingSortingMethods.selectionSort(arr1))/(10^6);
         System.out.println("Our Selection-Sort Time: " + (timeTaken) + " milliseconds");
         System.arraycopy(arr2,0, arr1, 0, sz);
 
+
+        timeTaken = (DanielMichaelTestingSortingMethods.bubbleSort(arr1))/(Math.pow(10,6));
+        System.out.println("Our Bubble-Sort Time: " + (timeTaken) + " milliseconds");
+        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
+        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+
+        // time the insertion sort
+        timeTaken = (DanielMichaelTestingSortingMethods.insertionSort(arr1))/(Math.pow(10,6));
+        System.out.println("Our Insertion-Sort Time: " + (timeTaken) + " milliseconds");
+        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
+        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+
+        // time the merge sort
+        timeTaken = (DanielMichaelTestingSortingMethods.mergeSort(arr1))/(Math.pow(10,6));
+        System.out.println("Our Merge-Sort Time: " + (timeTaken) + " milliseconds");
+        //System.out.println("Sorted Array: " + Arrays.toString(arr1));
+        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+
+        // time the quick sort
+        timeTaken = (DanielMichaelTestingSortingMethods.quickSort(arr1, 0, arr1.length - 1))/(Math.pow(10,6));
+        System.out.println("Our Quick-Sort Time: " + (timeTaken) + " milliseconds");
+        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
+
+        // time the bucket sort
+        timeTaken = (DanielMichaelTestingSortingMethods.bucketSort(arr1, 0, arr1.length - 1, 5))/(Math.pow(10,6));
+        System.out.println("Our Bucket-Sort Time: " + (timeTaken) + " milliseconds");
+        System.arraycopy(arr2,0, arr1, 0, sz); // copy the array again
 
         footer();
     }

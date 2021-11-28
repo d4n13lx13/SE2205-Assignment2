@@ -64,6 +64,41 @@ public class DanielMichaelTestingSortingMethods {
         return System.nanoTime() - start;
     }
 
+    public static <T extends Comparable<? super T>> long quickSort(T[] arr, int a, int b) {
+        long time = System.nanoTime(); //time start
+
+        if (a >= b) return 0;
+
+        T pivot = arr[b];
+        int l = a, r = b - 1;
+
+        while (l <= r) {
+            while (l <= r && arr[l].compareTo(pivot) <= 0) {
+                l = l + 1;
+            }
+            while (l <= r && arr[r].compareTo(pivot) >= 0) {
+                r = r - 1;
+            }
+            if (l < r) {
+                T temp = arr[l];
+                arr[l] = arr[r];
+                arr[r] = temp;
+
+                l = l + 1;
+                r = r - 1;
+            }
+        }
+        T temp = arr[l];
+        arr[l] = arr[b];
+        arr[b] = temp;
+
+        quickSort(arr, a, l - 1);
+        quickSort(arr, l + 1, b);
+
+        time = System.nanoTime() - time; //time end
+        return time;
+    }
+
     public static <T extends Comparable<? super T>> long mergeSort(T[] arr) {
         long start = System.nanoTime(); //time start
 

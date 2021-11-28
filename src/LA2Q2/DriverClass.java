@@ -33,7 +33,6 @@ public class DriverClass {
 //Add each StudentGrade object to the Vector class with its add method (Slide #36, Unit 2 Part 2)
 
 
-
 //print the unsorted sg contents just by using toString() method (see the sample output)
 
         System.out.println("Unsorted Array: ");
@@ -103,11 +102,11 @@ public class DriverClass {
     }
 //Your sort method will go here.
 
-    public static void sortMethod (StudentGrade[] stgrd, int key) {
+    public static void sortMethod(StudentGrade[] stgrd, int key) {
         if (stgrd.length < 2)
             return;
 
-        int mid  = stgrd.length / 2;
+        int mid = stgrd.length / 2;
 
         StudentGrade[] t = Arrays.copyOfRange(stgrd, 0, mid);
         StudentGrade[] b = Arrays.copyOfRange(stgrd, mid, stgrd.length);
