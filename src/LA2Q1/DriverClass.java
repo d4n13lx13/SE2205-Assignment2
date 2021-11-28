@@ -1,9 +1,9 @@
 package LA2Q1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class DriverClass {
 
@@ -53,7 +53,7 @@ public class DriverClass {
         footer();
     }
 
-    static void header() {
+    public static void header() {
         System.out.println("*****************************************************************************************************" +
                 "\nNames: Daniel and Michael" +
                 "\nStudent Numbers: 251076275 and 251110243" +
@@ -62,13 +62,16 @@ public class DriverClass {
                 "*******************************************************************************");
     }
 
-    static void footer() {
-        System.out.println("" +
-                "***********************************************************\n" +
-                "This is ____ on ____\n" +
-                "Completion of Lab Assignment 2, Question 1 is successful!\n" +
-                "Good bye! Alexander Van Hoeve and Piotr Nowak\n" +
-                "***********************************************************\n");
+    public static void footer() {
+        LocalTime currentTime = LocalTime.now();
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter dt1 = DateTimeFormatter.ofPattern("hh:mm");
+
+        System.out.println("**********************************************************" +
+                "\nThis is " + currentTime.format(dt1) + " on " + currentDate +
+                "\nCompletion of Lab Assignment 2 is successful!" +
+                "\nGood bye! Daniel Xie and Michael Wong" +
+                "\n**********************************************************");
     }
 
 }
