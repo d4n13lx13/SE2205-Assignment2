@@ -178,9 +178,15 @@ public class DanielMichaelTestingSortingMethods {
         return System.nanoTime() - start;
     }
 
+    /**
+     * the bucketSort method sorts an integer array using the bucket sorting algorithm.
+     *
+     * @param a - array to be sorted
+     * @return the time taken to sort the array
+     */
     public static long bucketSort(Integer[] a, int first, int last, int maxDigits) {
         long start = System.nanoTime();
-        Vector<Integer>[] buckets = new Vector[10];
+        Vector<Integer>[] buckets = new Vector[10]; //using radix 10
 
         for (int i = 0; i < buckets.length; i++)
             buckets[i] = new Vector<>();
@@ -190,7 +196,7 @@ public class DanielMichaelTestingSortingMethods {
                 buckets[k].removeAllElements();
 
             for (int l = first; l <= last; l++) {
-                Integer digit = findDigit(a[l], j);
+                Integer digit = findDigit(a[l], j); //puts element in the correct bucket
                 buckets[digit].add(a[l]);
             }
 
@@ -206,7 +212,7 @@ public class DanielMichaelTestingSortingMethods {
     }
 
 
-    public static Integer findDigit(int n, int i) {
+    public static Integer findDigit(int n, int i) { //finds correct radix for element n
         int t = 0;
         for (int j = 0; j <= i; j++) {
             t = n % 10;
